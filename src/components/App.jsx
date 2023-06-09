@@ -5,14 +5,13 @@ import { Section } from "./Section/Section";
 import { NotFeedback } from "./NotFeedback/NotFeedback";
 
 
-
 export const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  const onLeaveFeedback = ({ target: { name } }) => {
-    switch (name) {
+  const onLeaveFeedback = ({ target: { option } }) => {
+    switch (option) {
       case 'good':
         setGood(prevGood => prevGood + 1);
         break;
@@ -23,10 +22,10 @@ export const App = () => {
         setBad(prevBad => prevBad + 1);
         break;
       default:
-        console.log(`Type feedback name - ${name} is not`);
+        console.log(`Type feedback option - ${option} is not`);
     }
   };
-
+  
   const countTotalFeedback = obj => {
     return Object.values(obj).reduce((total, curr) => (total += curr));
   };
@@ -63,6 +62,3 @@ export const App = () => {
     </>
   );
 };
-
-
-
